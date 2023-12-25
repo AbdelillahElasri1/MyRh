@@ -1,10 +1,8 @@
-package com.example.hiringmanagment.Controller;
+package com.myrh.controllers;
 
-import com.example.hiringmanagment.Dto.SocieteDto;
-import com.example.hiringmanagment.Entitiy.Offre;
-import com.example.hiringmanagment.Entitiy.Societe;
-import com.example.hiringmanagment.Mapper.SocieteMapper;
-import com.example.hiringmanagment.Service.ServiceIterface.SocieteService;
+
+import com.myrh.dto.request.SocieteDto;
+import com.myrh.services.service.SocieteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,10 +20,10 @@ public class SocieteController {
 
 
     @PostMapping("")
-    public ResponseEntity create(@RequestParam("file")MultipartFile file,SocieteDto societeDto){
+    public ResponseEntity create(@RequestParam("file")MultipartFile file, SocieteDto societeDto){
 
 
-        String imageName = societeService.saveImage(file);
+
 
 
         //Societe societe = SocieteMapper.SM.toEntity(societeDto);

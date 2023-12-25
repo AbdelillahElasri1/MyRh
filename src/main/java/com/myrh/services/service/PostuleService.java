@@ -1,6 +1,7 @@
-package com.example.hiringmanagment.Service.ServiceIterface;
+package com.myrh.services.service;
 
-import com.example.hiringmanagment.Entitiy.Postule;
+
+import com.myrh.entities.Postule;
 
 public interface PostuleService {
 

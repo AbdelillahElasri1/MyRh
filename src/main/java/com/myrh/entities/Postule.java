@@ -1,4 +1,4 @@
-package com.example.hiringmanagment.Entitiy;
+package com.myrh.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

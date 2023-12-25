@@ -1,7 +1,8 @@
-package com.example.hiringmanagment.Service.ServiceIterface;
+package com.myrh.services.service;
 
-import com.example.hiringmanagment.Entitiy.Postule;
-import com.example.hiringmanagment.Entitiy.Societe;
+
+import com.myrh.entities.Postule;
+import com.myrh.entities.Societe;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

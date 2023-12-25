@@ -1,7 +1,7 @@
-package com.example.hiringmanagment.Dao;
+package com.myrh.repositories;
 
-import com.example.hiringmanagment.Entitiy.Offre;
-import com.example.hiringmanagment.Entitiy.Societe;
+import com.myrh.entities.Offre;
+import com.myrh.entities.Societe;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

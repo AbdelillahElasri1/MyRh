@@ -1,6 +1,7 @@
-package com.example.hiringmanagment.Dto;
+package com.myrh.dto.request;
 
-import com.example.hiringmanagment.Entitiy.Offre;
+
+
 
 public class PostuleDto {
 

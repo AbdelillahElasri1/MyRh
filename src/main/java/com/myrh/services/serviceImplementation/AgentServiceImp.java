@@ -1,9 +1,11 @@
-package com.example.hiringmanagment.Service;
+package com.myrh.services.serviceImplementation;
 
-import com.example.hiringmanagment.Entitiy.Offre;
-import com.example.hiringmanagment.Service.ServiceIterface.Agent;
+
+import com.myrh.entities.Offre;
+import com.myrh.services.service.Agent;
 
 public class AgentServiceImp implements Agent {
+
 
     @Override
     public boolean login(Agent agent) {

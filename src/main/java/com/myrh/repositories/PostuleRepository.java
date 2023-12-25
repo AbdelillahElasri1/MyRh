@@ -1,7 +1,6 @@
-package com.example.hiringmanagment.Dao;
+package com.myrh.repositories;
 
-import com.example.hiringmanagment.Entitiy.Offre;
-import com.example.hiringmanagment.Entitiy.Postule;
+import com.myrh.entities.Postule;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PostuleRepository extends JpaRepository<Postule,Integer> {

@@ -1,6 +1,6 @@
-package com.example.hiringmanagment.Service.ServiceIterface;
+package com.myrh.services.service;
 
-import com.example.hiringmanagment.Entitiy.Offre;
+import com.myrh.entities.Offre;
 
 import java.util.List;
 

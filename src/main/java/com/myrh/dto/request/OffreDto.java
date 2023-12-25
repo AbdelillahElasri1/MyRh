@@ -1,7 +1,7 @@
-package com.example.hiringmanagment.Dto;
+package com.myrh.dto.request;
 
-import com.example.hiringmanagment.Entitiy.Societe;
-import com.example.hiringmanagment.Enums.NiveauEtude;
+
+import com.myrh.enums.NiveauEtude;
 
 public class OffreDto {
 

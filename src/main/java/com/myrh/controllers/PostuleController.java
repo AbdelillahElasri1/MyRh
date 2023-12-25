@@ -1,5 +1,4 @@
-package com.example.hiringmanagment.Controller;
-
+package com.myrh.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

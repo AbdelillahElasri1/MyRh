@@ -1,6 +1,4 @@
-package com.example.hiringmanagment.Controller;
-
-import com.example.hiringmanagment.Entitiy.Offre;
+package com.myrh.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

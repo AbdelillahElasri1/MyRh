@@ -1,6 +1,6 @@
-package com.example.hiringmanagment.Entitiy;
+package com.myrh.entities;
 
-import com.example.hiringmanagment.Enums.NiveauEtude;
+import com.myrh.enums.NiveauEtude;
 import jakarta.persistence.*;
 import lombok.*;
 

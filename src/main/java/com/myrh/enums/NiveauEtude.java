@@ -1,4 +1,4 @@
-package com.example.hiringmanagment.Enums;
+package com.myrh.enums;
 
 public enum NiveauEtude {
     NIVEAU_BAC,

@@ -1,11 +1,13 @@
-package com.example.hiringmanagment.Service;
+package com.myrh.services.serviceImplementation;
 
-import com.example.hiringmanagment.Entitiy.Offre;
-import com.example.hiringmanagment.Service.ServiceIterface.OffreService;
+
+import com.myrh.entities.Offre;
+import com.myrh.services.service.OffreService;
 
 import java.util.List;
 
 public class OffreServiceImp implements OffreService {
+
     @Override
     public List<Offre> fetch() {
         return null;

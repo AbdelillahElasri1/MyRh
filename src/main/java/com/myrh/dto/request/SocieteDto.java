@@ -1,4 +1,4 @@
-package com.example.hiringmanagment.Dto;
+package com.myrh.dto.request;
 
 import org.springframework.web.multipart.MultipartFile;
 

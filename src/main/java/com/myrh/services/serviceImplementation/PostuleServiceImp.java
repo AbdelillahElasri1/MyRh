@@ -1,9 +1,11 @@
-package com.example.hiringmanagment.Service;
+package com.myrh.services.serviceImplementation;
 
-import com.example.hiringmanagment.Entitiy.Postule;
-import com.example.hiringmanagment.Service.ServiceIterface.PostuleService;
+
+import com.myrh.entities.Postule;
+import com.myrh.services.service.PostuleService;
 
 public class PostuleServiceImp implements PostuleService {
+
     @Override
     public Postule create(Postule postule) {
         return null;
