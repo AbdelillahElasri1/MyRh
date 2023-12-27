@@ -11,7 +11,11 @@ import java.util.List;
 
 public interface SocieteService {
 
+    boolean SendGeneratedToken(SocieteDto societeDto);
+
     boolean login(String email,String password);
+
+    boolean verifieToken(String token,String email);
     SocieteDto Create(SocieteDto societeDto);
     List<Postule> consulte(Postule postule);
 
