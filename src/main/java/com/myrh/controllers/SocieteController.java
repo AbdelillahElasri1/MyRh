@@ -1,9 +1,11 @@
 package com.myrh.controllers;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myrh.dto.request.SocieteDto;
 import com.myrh.services.service.SocieteService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,28 +14,20 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/societe")
 public class SocieteController {
 
-    private SocieteService societeService;
-    @Autowired
-    public SocieteController(SocieteService societeService){
+    private final SocieteService societeService;
+
+    public SocieteController(SocieteService societeService) {
         this.societeService = societeService;
     }
 
 
-    @PostMapping("")
-    public ResponseEntity create(@RequestParam("file")MultipartFile file, SocieteDto societeDto){
-
-
-
-
-
-        //Societe societe = SocieteMapper.SM.toEntity(societeDto);
-        //societe.setImage(imageName);
-
-        //Societe societe = SocieteMapper.SM.toEntity(societeDto);
-        //societe.setImage(imageName);
-        //return ResponseEntity.ok(societeService.Create(societe));
-
-        return ResponseEntity.ok(societeDto);
+    @PostMapping(value = "",consumes = { MediaType.APPLICATION_JSON_VALUE,
+                                         MediaType.MULTIPART_FORM_DATA_VALUE })
+    public ResponseEntity create(@RequestPart("societeDto") String societeDto,@RequestPart MultipartFile file) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        SocieteDto societedto = objectMapper.readValue(societeDto ,SocieteDto.class);
+        societedto.file = file;
+        return ResponseEntity.ok(societeService.Create(societedto));
 
     }
 

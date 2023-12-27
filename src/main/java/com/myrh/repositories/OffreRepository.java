@@ -10,4 +10,5 @@ public interface OffreRepository extends JpaRepository<Offre,Integer> {
 
     List<Offre> findAllBySociete(Societe societe);
 
+
 }

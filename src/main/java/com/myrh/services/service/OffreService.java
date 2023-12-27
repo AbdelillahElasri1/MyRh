@@ -1,5 +1,6 @@
 package com.myrh.services.service;
 
+import com.myrh.dto.request.OffreDto;
 import com.myrh.entities.Offre;
 
 import java.util.List;
@@ -7,8 +8,10 @@ import java.util.List;
 public interface OffreService {
 
     List<Offre> fetch();
-    Offre create(Offre offre);
-    Offre update(Offre offre);
-    Offre delete(Offre offre);
+    OffreDto create(OffreDto offre);
+    OffreDto update(OffreDto offreDto);
+    boolean delete(int  offreid);
+
+    OffreDto MuteOffre(OffreDto offreDto);
 
 }

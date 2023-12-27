@@ -1,6 +1,7 @@
 package com.myrh.entities;
 
 import com.myrh.enums.NiveauEtude;
+import com.myrh.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Offre {
     private String profile;
     private float salaire;
     private NiveauEtude niveau_etude;
+    private Status status;
 
     @OneToMany(mappedBy="offre")
     private List<Postule> postule;
