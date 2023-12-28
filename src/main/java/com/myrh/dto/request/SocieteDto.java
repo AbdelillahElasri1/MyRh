@@ -11,6 +11,6 @@ public class SocieteDto {
     public String password;
     public String adresse;
     public String image;
-    public MultipartFile file;
+//    public MultipartFile file;
 
 }

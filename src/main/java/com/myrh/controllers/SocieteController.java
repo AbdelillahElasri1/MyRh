@@ -3,32 +3,42 @@ package com.myrh.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.myrh.dto.request.LoginRequestDTO;
+import com.myrh.dto.request.RegisterRequestDTO;
 import com.myrh.dto.request.SocieteDto;
 import com.myrh.services.service.SocieteService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/societe")
+@RequestMapping("/api/societe")
+@RequiredArgsConstructor
 public class SocieteController {
 
     private final SocieteService societeService;
 
-    public SocieteController(SocieteService societeService) {
-        this.societeService = societeService;
-    }
-
-
-    @PostMapping(value = "",consumes = { MediaType.APPLICATION_JSON_VALUE,
-                                         MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity create(@RequestPart("societeDto") String societeDto,@RequestPart MultipartFile file) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        SocieteDto societedto = objectMapper.readValue(societeDto ,SocieteDto.class);
-        societedto.file = file;
-        return ResponseEntity.ok(societeService.Create(societedto));
+    @PostMapping("/register")
+    public ResponseEntity<SocieteDto> register(@RequestBody RegisterRequestDTO registerRequestDTO) {
+        SocieteDto registerSociete = societeService.register(registerRequestDTO);
+        if (registerSociete != null) {
+            return new ResponseEntity<>(registerSociete, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<SocieteDto> login(@RequestBody LoginRequestDTO loginRequestDTO){
+        SocieteDto loginSociete = societeService.login(loginRequestDTO);
+        if (loginSociete != null){
+            return new ResponseEntity<>(loginSociete, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
