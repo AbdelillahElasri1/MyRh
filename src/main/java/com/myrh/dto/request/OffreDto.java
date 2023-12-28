@@ -20,7 +20,4 @@ public class OffreDto {
     public NiveauEtude niveau_etude;
     public Status status;
     public int offreId;
-
-
-
 }

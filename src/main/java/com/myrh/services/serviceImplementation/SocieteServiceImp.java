@@ -1,13 +1,17 @@
 package com.myrh.services.serviceImplementation;
 
 
+import com.myrh.dto.request.LoginRequestDTO;
+import com.myrh.dto.request.RegisterRequestDTO;
 import com.myrh.dto.request.SocieteDto;
 import com.myrh.entities.Postule;
 import com.myrh.entities.Societe;
 import com.myrh.repositories.SocieteRepository;
 import com.myrh.services.service.SocieteService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +19,7 @@ import java.io.File;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class SocieteServiceImp implements SocieteService {
 
     @Value("${app.imagePath}")
@@ -22,26 +27,44 @@ public class SocieteServiceImp implements SocieteService {
 
     private final ModelMapper modelMapper;
     private final SocieteRepository societeRepository;
+    private PasswordEncoder passwordEncoder;
 
-    public SocieteServiceImp(ModelMapper modelMapper,  SocieteRepository societeRepository) {
-        this.modelMapper = modelMapper;
-        this.societeRepository = societeRepository;
+//    @Override
+//    public boolean login(String email, String password) {
+//        return false;
+//    }
+//
+//    @Override
+//    public SocieteDto Create(SocieteDto societeDto) {
+//
+//        societeDto.image = saveImage(societeDto.file);
+//        Societe societe = modelMapper.map(societeDto,Societe.class);
+//        Societe societe1 =  societeRepository.save(societe);
+//        SocieteDto societeDto1 = modelMapper.map(societe1,SocieteDto.class);
+//        return societeDto1;
+//
+//    }
+
+
+    @Override
+    public SocieteDto register(RegisterRequestDTO registerRequest) {
+        Societe societe = new Societe();
+        societe.setEmail(registerRequest.getEmail());
+        societe.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        societe.setAdresse(registerRequest.getAdresse());
+        societe.setImage(registerRequest.getImage());
+        Societe savedSociete = societeRepository.save(societe);
+        return modelMapper.map(savedSociete, SocieteDto.class);
     }
 
     @Override
-    public boolean login(String email, String password) {
-        return false;
-    }
+    public SocieteDto login(LoginRequestDTO loginRequest) {
 
-    @Override
-    public SocieteDto Create(SocieteDto societeDto) {
-
-        societeDto.image = saveImage(societeDto.file);
-        Societe societe = modelMapper.map(societeDto,Societe.class);
-        Societe societe1 =  societeRepository.save(societe);
-        SocieteDto societeDto1 = modelMapper.map(societe1,SocieteDto.class);
-        return societeDto1;
-
+        Societe societe = societeRepository.findByEmail(loginRequest.getEmail());
+        if (societe != null && passwordEncoder.matches(loginRequest.getPassword(), societe.getPassword())){
+            return modelMapper.map(societe, SocieteDto.class);
+        }
+        return null;
     }
 
     @Override
